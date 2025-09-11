@@ -1,0 +1,30 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_001177F0 .scope module, "full_adder" "full_adder" 2 2;
+ .timescale -9 -12;
+L_00112C68 .functor XOR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_0011EB70 .functor XOR 1, L_00112C68, C4<z>, C4<0>, C4<0>;
+L_0011EBE0 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0011EC88 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0011ECF8 .functor OR 1, L_0011EBE0, L_0011EC88, C4<0>, C4<0>;
+L_0011EDA0 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0011EDD8 .functor OR 1, L_0011ECF8, L_0011EDA0, C4<0>, C4<0>;
+v00112B60_0 .net *"_s0", 0 0, L_00112C68; 1 drivers
+v00112BB8_0 .net *"_s10", 0 0, L_0011EDA0; 1 drivers
+v00112C10_0 .net *"_s4", 0 0, L_0011EBE0; 1 drivers
+v0011E908_0 .net *"_s6", 0 0, L_0011EC88; 1 drivers
+v0011E960_0 .net *"_s8", 0 0, L_0011ECF8; 1 drivers
+v0011E9B8_0 .net "a", 0 0, C4<z>; 0 drivers
+v0011EA10_0 .net "b", 0 0, C4<z>; 0 drivers
+v0011EA68_0 .net "c_in", 0 0, C4<z>; 0 drivers
+v0011EAC0_0 .net "carry_out", 0 0, L_0011EDD8; 1 drivers
+v0011EB18_0 .net "sum", 0 0, L_0011EB70; 1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "fullAdder.v";

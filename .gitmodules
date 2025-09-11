@@ -1,0 +1,3 @@
+[submodule "GATES"]
+	path = GATES
+	url = https://github.com/NjambeEugene/HDL-projects

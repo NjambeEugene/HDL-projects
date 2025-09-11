@@ -1,0 +1,50 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00822AE0 .scope module, "half_adderTB" "half_adderTB" 2 4;
+ .timescale -9 -12;
+v011057E0_0 .var "a", 0 0;
+v01105838_0 .var "b", 0 0;
+v01105890_0 .net "carry", 0 0, L_011059E8; 1 drivers
+v011058E8_0 .net "sum", 0 0, L_01102068; 1 drivers
+S_01101F30 .scope module, "uut" "half_adder" 2 13, 3 1, S_00822AE0;
+ .timescale -9 -12;
+L_01102068 .functor XOR 1, v011057E0_0, v01105838_0, C4<0>, C4<0>;
+L_011059E8 .functor AND 1, v011057E0_0, v01105838_0, C4<1>, C4<1>;
+v00822B68_0 .net "a", 0 0, v011057E0_0; 1 drivers
+v01101FB8_0 .net "b", 0 0, v01105838_0; 1 drivers
+v01102010_0 .alias "carry", 0 0, v01105890_0;
+v01105788_0 .alias "sum", 0 0, v011058E8_0;
+    .scope S_00822AE0;
+T_0 ;
+    %vpi_call 2 22 "$dumpfile", "half_adder.vcd";
+    %vpi_call 2 23 "$dumpvars", 1'sb0, S_00822AE0;
+    %set/v v011057E0_0, 0, 1;
+    %set/v v01105838_0, 0, 1;
+    %delay 10000, 0;
+    %set/v v011057E0_0, 0, 1;
+    %set/v v01105838_0, 1, 1;
+    %delay 10000, 0;
+    %set/v v011057E0_0, 1, 1;
+    %set/v v01105838_0, 0, 1;
+    %delay 10000, 0;
+    %set/v v011057E0_0, 1, 1;
+    %set/v v01105838_0, 1, 1;
+    %delay 10000, 0;
+    %vpi_call 2 29 "$finish";
+    %end;
+    .thread T_0;
+    .scope S_00822AE0;
+T_1 ;
+    %vpi_call 2 33 "$monitor", " time=%g, a=%b, b=%b, sum=%b, carry=%b", $time, v011057E0_0, v01105838_0, v011058E8_0, v01105890_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "half_adderTB.v";
+    "./Half_adder.v";

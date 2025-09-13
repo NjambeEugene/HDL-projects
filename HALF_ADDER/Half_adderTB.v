@@ -3,19 +3,12 @@
 
 module half_adderTB();
     //inputs
-    reg a,b;
-    
-
+    reg a,b; 
     //outputs
     wire sum;
     wire carry;
 //Instantiate unit under test
-    half_adder uut (
-        .a(a),
-        .b(b),
-        .sum(sum),
-        .carry(carry)
-    );
+    half_adder uut (.a(a),.b(b),.sum(sum),.carry(carry));
 
     initial begin
         // VCD dump
@@ -32,7 +25,6 @@ module half_adderTB();
     initial begin
         $monitor(" time=%g, a=%b, b=%b, sum=%b, carry=%b", $time, a, b, sum, carry);
     end
-
 endmodule
             
 

@@ -1,0 +1,100 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008C8950 .scope module, "encoder8_3TB" "encoder8_3TB" 2 1;
+ .timescale 0 0;
+v009392B8_0 .var "i", 7 0;
+v00938FA0_0 .var/i "j", 31 0;
+RS_009141DC .resolv tri, L_00938D38, L_009397B0, L_00939440, C4<zzz>;
+v00939310_0 .net8 "y", 2 0, RS_009141DC; 3 drivers
+S_008C7D18 .scope module, "dut" "encoder8_3" 2 6, 3 1, S_008C8950;
+ .timescale 0 0;
+L_008C2008 .functor OR 1, L_00938D90, L_00938E40, C4<0>, C4<0>;
+L_008C1FD0 .functor OR 1, L_008C2008, L_00938E98, C4<0>, C4<0>;
+L_008CEE78 .functor OR 1, L_008C1FD0, L_00939498, C4<0>, C4<0>;
+L_008CEF58 .functor OR 1, L_00939AC8, L_00939C28, C4<0>, C4<0>;
+L_0093A520 .functor OR 1, L_008CEF58, L_00939E90, C4<0>, C4<0>;
+L_0093A558 .functor OR 1, L_0093A520, L_00939A18, C4<0>, C4<0>;
+L_0093A670 .functor OR 1, L_00939650, L_00939910, C4<0>, C4<0>;
+L_0093A478 .functor OR 1, L_0093A670, L_00939B78, C4<0>, C4<0>;
+L_0093A600 .functor OR 1, L_0093A478, L_00939DE0, C4<0>, C4<0>;
+v009131B8_0 .net *"_s10", 0 0, L_008C1FD0; 1 drivers
+v00913210_0 .net *"_s13", 0 0, L_00939498; 1 drivers
+v00913268_0 .net *"_s14", 0 0, L_008CEE78; 1 drivers
+v008CABD0_0 .net *"_s19", 0 0, L_00939AC8; 1 drivers
+v008CAC28_0 .net *"_s21", 0 0, L_00939C28; 1 drivers
+v008CAC80_0 .net *"_s22", 0 0, L_008CEF58; 1 drivers
+v008CACD8_0 .net *"_s25", 0 0, L_00939E90; 1 drivers
+v008C1F10_0 .net *"_s26", 0 0, L_0093A520; 1 drivers
+v00939368_0 .net *"_s29", 0 0, L_00939A18; 1 drivers
+v00938F48_0 .net *"_s3", 0 0, L_00938D90; 1 drivers
+v00938EF0_0 .net *"_s30", 0 0, L_0093A558; 1 drivers
+v00938FF8_0 .net *"_s35", 0 0, L_00939650; 1 drivers
+v00939208_0 .net *"_s37", 0 0, L_00939910; 1 drivers
+v009391B0_0 .net *"_s38", 0 0, L_0093A670; 1 drivers
+v00939050_0 .net *"_s41", 0 0, L_00939B78; 1 drivers
+v00938CE0_0 .net *"_s42", 0 0, L_0093A478; 1 drivers
+v00939260_0 .net *"_s45", 0 0, L_00939DE0; 1 drivers
+v009390A8_0 .net *"_s46", 0 0, L_0093A600; 1 drivers
+v00938C30_0 .net *"_s5", 0 0, L_00938E40; 1 drivers
+v00939158_0 .net *"_s6", 0 0, L_008C2008; 1 drivers
+v00939100_0 .net *"_s9", 0 0, L_00938E98; 1 drivers
+v00938C88_0 .net "i", 7 0, v009392B8_0; 1 drivers
+v00938DE8_0 .alias "y", 2 0, v00939310_0;
+L_00938D38 .part/pv L_008CEE78, 2, 1, 3;
+L_00938D90 .part v009392B8_0, 4, 1;
+L_00938E40 .part v009392B8_0, 5, 1;
+L_00938E98 .part v009392B8_0, 6, 1;
+L_00939498 .part v009392B8_0, 7, 1;
+L_009397B0 .part/pv L_0093A558, 1, 1, 3;
+L_00939AC8 .part v009392B8_0, 2, 1;
+L_00939C28 .part v009392B8_0, 3, 1;
+L_00939E90 .part v009392B8_0, 6, 1;
+L_00939A18 .part v009392B8_0, 7, 1;
+L_00939440 .part/pv L_0093A600, 0, 1, 3;
+L_00939650 .part v009392B8_0, 1, 1;
+L_00939910 .part v009392B8_0, 3, 1;
+L_00939B78 .part v009392B8_0, 5, 1;
+L_00939DE0 .part v009392B8_0, 7, 1;
+    .scope S_008C8950;
+T_0 ;
+    %vpi_call 2 9 "$dumpfile", "encoder.vcd";
+    %vpi_call 2 10 "$dumpvars", 1'sb0, S_008C8950;
+    %set/v v009392B8_0, 0, 8;
+    %set/v v00938FA0_0, 0, 32;
+T_0.0 ;
+    %load/v 8, v00938FA0_0, 32;
+   %cmpi/s 8, 8, 32;
+    %jmp/0xz T_0.1, 5;
+    %movi 8, 1, 32;
+    %ix/getv/s 0, v00938FA0_0;
+    %shiftl/i0  8, 32;
+    %set/v v009392B8_0, 8, 8;
+    %delay 10, 0;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v00938FA0_0, 32;
+    %set/v v00938FA0_0, 8, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+    .scope S_008C8950;
+T_1 ;
+    %vpi_call 2 20 "$monitor", "input i=%8b | output y=%3b", v009392B8_0, v00939310_0;
+    %end;
+    .thread T_1;
+    .scope S_008C8950;
+T_2 ;
+    %delay 100, 0;
+    %vpi_call 2 22 "$finish";
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "encoderTB.v";
+    "encoder.v";

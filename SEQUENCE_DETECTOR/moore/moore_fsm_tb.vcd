@@ -1,0 +1,127 @@
+$date
+	Mon Nov 03 17:55:39 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module moore_fsm_tb $end
+$var wire 1 ! out $end
+$var reg 1 " clk $end
+$var reg 1 # in $end
+$var reg 1 $ reset $end
+$scope module uut $end
+$var wire 1 % clk $end
+$var wire 1 & in $end
+$var wire 1 ' reset $end
+$var reg 2 ( current_state [1:0] $end
+$var reg 2 ) next_state [1:0] $end
+$var reg 1 * out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0*
+b0 )
+b0 (
+1'
+0&
+0%
+1$
+0#
+0"
+0!
+$end
+#5000
+1"
+1%
+#10000
+0"
+0%
+0$
+0'
+#15000
+1"
+1%
+#20000
+b1 )
+0"
+0%
+1#
+1&
+#25000
+b1 (
+1"
+1%
+#30000
+b10 )
+0"
+0%
+0#
+0&
+#35000
+b0 )
+b10 (
+1"
+1%
+#40000
+b11 )
+0"
+0%
+1#
+1&
+#45000
+1*
+1!
+b1 )
+b11 (
+1"
+1%
+#50000
+0"
+0%
+#55000
+0*
+0!
+b1 (
+1"
+1%
+#60000
+b10 )
+0"
+0%
+0#
+0&
+#65000
+b0 )
+b10 (
+1"
+1%
+#70000
+b11 )
+0"
+0%
+1#
+1&
+#75000
+1*
+1!
+b1 )
+b11 (
+1"
+1%
+#80000
+0"
+0%
+#85000
+0*
+0!
+b1 (
+1"
+1%
+#90000
+0"
+0%

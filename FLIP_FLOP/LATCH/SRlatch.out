@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_012B7EE8 .scope module, "srLatchTB" "srLatchTB" 2 2;
+ .timescale 0 0;
+v012B9160_0 .var/i "i", 31 0;
+v012B91B8_0 .net "q", 0 0, L_00912C00; 1 drivers
+v00912B70_0 .net "q_bar", 0 0, L_012BECC0; 1 drivers
+v012BE978_0 .var "r", 0 0;
+v012BE710_0 .var "s", 0 0;
+S_012B8768 .scope module, "uut" "srLatch" 2 8, 3 1, S_012B7EE8;
+ .timescale 0 0;
+L_012B2020 .functor AND 1, v012BE978_0, L_012BEDD8, C4<1>, C4<1>;
+L_00912C00 .functor NOT 1, L_012B2020, C4<0>, C4<0>, C4<0>;
+L_00912CA8 .functor AND 1, v012BE710_0, L_012BED68, C4<1>, C4<1>;
+L_012BECC0 .functor NOT 1, L_00912CA8, C4<0>, C4<0>, C4<0>;
+L_012BED68 .functor BUFZ 1, L_00912C00, C4<0>, C4<0>, C4<0>;
+L_012BEDD8 .functor BUFZ 1, L_012BECC0, C4<0>, C4<0>, C4<0>;
+v012B59D0_0 .net *"_s0", 0 0, L_012B2020; 1 drivers
+v012B5A28_0 .net *"_s4", 0 0, L_00912CA8; 1 drivers
+v012B5A80_0 .alias "q", 0 0, v012B91B8_0;
+v012B1F18_0 .alias "q_bar", 0 0, v00912B70_0;
+v012B1F70_0 .net "q_bar_int", 0 0, L_012BEDD8; 1 drivers
+v012B1FC8_0 .net "q_int", 0 0, L_012BED68; 1 drivers
+v012B90B0_0 .net "r", 0 0, v012BE978_0; 1 drivers
+v012B9108_0 .net "s", 0 0, v012BE710_0; 1 drivers
+    .scope S_012B7EE8;
+T_0 ;
+    %vpi_call 2 16 "$dumpfile", "SRlatch.vcd";
+    %vpi_call 2 17 "$dumpvars", 1'sb0, S_012B7EE8;
+    %set/v v012B9160_0, 0, 32;
+T_0.0 ;
+    %load/v 8, v012B9160_0, 32;
+   %cmpi/s 8, 4, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/v 8, v012B9160_0, 32;
+    %set/v v012BE978_0, 8, 1;
+    %set/v v012BE710_0, 9, 1;
+    %delay 10, 0;
+    %load/v 8, v012BE710_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %mov 8, 4, 1;
+    %load/v 9, v012BE978_0, 1;
+    %mov 10, 0, 1;
+    %cmpi/u 9, 0, 2;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_0.2, 8;
+    %vpi_call 2 22 "$display", "time=%0t | s=%b r=%b | q=x q_bar=x (INVALID)", $time, v012BE710_0, v012BE978_0;
+    %jmp T_0.3;
+T_0.2 ;
+    %vpi_call 2 24 "$display", "time=%0t | s=%b r=%b | q=%b q_bar=%b", $time, v012BE710_0, v012BE978_0, v012B91B8_0, v00912B70_0;
+T_0.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v012B9160_0, 32;
+    %set/v v012B9160_0, 8, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %vpi_call 2 26 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "SRlatchTB.v";
+    "SRlatch.v";

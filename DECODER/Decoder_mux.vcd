@@ -1,0 +1,99 @@
+$date
+	Fri Nov 07 17:30:05 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_decoder_mux $end
+$var wire 1 ! y0 $end
+$var wire 1 " y1 $end
+$var wire 1 # y2 $end
+$var wire 1 $ y3 $end
+$var reg 1 % a0 $end
+$var reg 1 & a1 $end
+$var integer 32 ' i [31:0] $end
+$scope module uut $end
+$var wire 1 ( a0 $end
+$var wire 1 ) a1 $end
+$var wire 1 ! y0 $end
+$var wire 1 " y1 $end
+$var wire 1 # y2 $end
+$var wire 1 $ y3 $end
+$scope module Y0 $end
+$var wire 1 * i0 $end
+$var wire 1 + i1 $end
+$var wire 1 ( s $end
+$var wire 1 ! y $end
+$upscope $end
+$scope module Y1 $end
+$var wire 1 , i0 $end
+$var wire 1 - i1 $end
+$var wire 1 ( s $end
+$var wire 1 " y $end
+$upscope $end
+$scope module Y2 $end
+$var wire 1 . i0 $end
+$var wire 1 / i1 $end
+$var wire 1 ( s $end
+$var wire 1 # y $end
+$upscope $end
+$scope module Y3 $end
+$var wire 1 0 i0 $end
+$var wire 1 1 i1 $end
+$var wire 1 ( s $end
+$var wire 1 $ y $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+11
+00
+0/
+1.
+1-
+0,
+0+
+1*
+0)
+0(
+b0 '
+0&
+0%
+0$
+1#
+0"
+1!
+$end
+#10
+0!
+0#
+1"
+1$
+1%
+1(
+b1 '
+#20
+1!
+1#
+0"
+0$
+1&
+1)
+0%
+0(
+b10 '
+#30
+0!
+0#
+1"
+1$
+1%
+1(
+b11 '
+#40
+b100 '

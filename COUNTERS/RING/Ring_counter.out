@@ -1,0 +1,102 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00FE1F18 .scope module, "ring_counter_tb" "ring_counter_tb" 2 1;
+ .timescale 0 0;
+v00FE5560_0 .var "clock", 0 0;
+v00FE55B8_0 .net "q", 3 0, v01023158_0; 1 drivers
+v00FE5610_0 .var "reset", 0 0;
+S_00FE1FA0 .scope module, "uut" "ring_counter" 2 5, 3 1, S_00FE1F18;
+ .timescale 0 0;
+L_00FE2028 .functor BUFZ 4, v01023158_0, C4<0000>, C4<0000>, C4<0000>;
+v00FE5BB8_0 .net "clock", 0 0, v00FE5560_0; 1 drivers
+v01023100_0 .net "out", 3 0, L_00FE2028; 1 drivers
+v01023158_0 .var "q", 3 0;
+v010231B0_0 .net "reset", 0 0, v00FE5610_0; 1 drivers
+E_00FE3E50 .event posedge, v00FE5BB8_0;
+    .scope S_00FE1FA0;
+T_0 ;
+    %wait E_00FE3E50;
+    %load/v 8, v010231B0_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %movi 8, 1, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v01023158_0, 0, 8;
+    %jmp T_0.1;
+T_0.0 ;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.2, 4;
+    %load/x1p 8, v01023158_0, 1;
+    %jmp T_0.3;
+T_0.2 ;
+    %mov 8, 2, 1;
+T_0.3 ;
+; Save base=8 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %ix/load 1, 3, 0;
+    %assign/v0/x1 v01023158_0, 0, 8;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.4, 4;
+    %load/x1p 8, v01023158_0, 1;
+    %jmp T_0.5;
+T_0.4 ;
+    %mov 8, 2, 1;
+T_0.5 ;
+; Save base=8 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %ix/load 1, 2, 0;
+    %assign/v0/x1 v01023158_0, 0, 8;
+    %load/v 8, v01023158_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %ix/load 1, 1, 0;
+    %assign/v0/x1 v01023158_0, 0, 8;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.6, 4;
+    %load/x1p 8, v01023158_0, 1;
+    %jmp T_0.7;
+T_0.6 ;
+    %mov 8, 2, 1;
+T_0.7 ;
+; Save base=8 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v01023158_0, 0, 8;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_00FE1F18;
+T_1 ;
+    %set/v v00FE5560_0, 0, 1;
+T_1.0 ;
+    %delay 5, 0;
+    %load/v 8, v00FE5560_0, 1;
+    %inv 8, 1;
+    %set/v v00FE5560_0, 8, 1;
+    %jmp T_1.0;
+    %end;
+    .thread T_1;
+    .scope S_00FE1F18;
+T_2 ;
+    %vpi_call 2 17 "$dumpfile", "Ring_counter.vcd";
+    %vpi_call 2 18 "$dumpvars", 1'sb0, S_00FE1F18;
+    %vpi_call 2 20 "$monitor", "Time=%t,q=%b", $time, v00FE55B8_0;
+    %set/v v00FE5610_0, 1, 1;
+    %delay 10, 0;
+    %set/v v00FE5610_0, 0, 1;
+    %delay 100, 0;
+    %vpi_call 2 25 "$finish";
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "Ring_counterTB.v";
+    "Ring_counter.v";

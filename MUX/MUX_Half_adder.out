@@ -1,0 +1,76 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00FD84E0 .scope module, "MUX_Half_adder_tb" "MUX_Half_adder_tb" 2 2;
+ .timescale -9 -12;
+v010352D0_0 .var "I0", 0 0;
+v01034CF8_0 .var "I1", 0 0;
+v01035118_0 .var "S", 0 0;
+v01035170_0 .net "Y", 0 0, L_00FDA9A0; 1 drivers
+v01035380_0 .var/i "i", 31 0;
+S_00FD7CE8 .scope module, "uut" "mux_halfadder" 2 8, 3 13, S_00FD84E0;
+ .timescale -9 -12;
+L_00FD9CF0 .functor NOT 1, v01035118_0, C4<0>, C4<0>, C4<0>;
+L_00FDA930 .functor AND 1, L_00FD9D28, L_00FD9CF0, C4<1>, C4<1>;
+L_00FDA9A0 .functor OR 1, L_00FDA7F8, L_00FDA930, C4<0>, C4<0>;
+v00FD1FC8_0 .net "I0", 0 0, v010352D0_0; 1 drivers
+v00FD9C98_0 .net "I1", 0 0, v01034CF8_0; 1 drivers
+v01035010_0 .net "S", 0 0, v01035118_0; 1 drivers
+v01034C48_0 .alias "Y", 0 0, v01035170_0;
+v010351C8_0 .net *"_s0", 0 0, L_00FD9CF0; 1 drivers
+v01035068_0 .net *"_s2", 0 0, L_00FDA930; 1 drivers
+v01034CA0_0 .net "carry1", 0 0, L_00FD2020; 1 drivers
+v01035278_0 .net "carry2", 0 0, L_00FDA7F8; 1 drivers
+v010350C0_0 .net "sum1", 0 0, L_00FD9D28; 1 drivers
+v01035220_0 .net "sum2", 0 0, L_00FD9DD0; 1 drivers
+S_00FD8238 .scope module, "HA1" "half_adder" 3 22, 3 3, S_00FD7CE8;
+ .timescale -9 -12;
+L_00FD9D28 .functor XOR 1, v010352D0_0, v01035118_0, C4<0>, C4<0>;
+L_00FD2020 .functor AND 1, v010352D0_0, v01035118_0, C4<1>, C4<1>;
+v010132A8_0 .alias "A", 0 0, v00FD1FC8_0;
+v01013300_0 .alias "B", 0 0, v01035010_0;
+v00FD1F18_0 .alias "CARRY", 0 0, v01034CA0_0;
+v00FD1F70_0 .alias "SUM", 0 0, v010350C0_0;
+S_00FD8568 .scope module, "HA2" "half_adder" 3 23, 3 3, S_00FD7CE8;
+ .timescale -9 -12;
+L_00FD9DD0 .functor XOR 1, v01034CF8_0, v01035118_0, C4<0>, C4<0>;
+L_00FDA7F8 .functor AND 1, v01034CF8_0, v01035118_0, C4<1>, C4<1>;
+v01013DF0_0 .alias "A", 0 0, v00FD9C98_0;
+v01013E48_0 .alias "B", 0 0, v01035010_0;
+v01013EA0_0 .alias "CARRY", 0 0, v01035278_0;
+v01013250_0 .alias "SUM", 0 0, v01035220_0;
+    .scope S_00FD84E0;
+T_0 ;
+    %vpi_call 2 18 "$dumpfile", "MUX_Half_adder.vcd";
+    %vpi_call 2 19 "$dumpvars", 1'sb0, S_00FD84E0;
+    %vpi_call 2 21 "$display", " S | I0 | I1 | Y ";
+    %vpi_call 2 22 "$display", "---------------";
+    %set/v v01035380_0, 0, 32;
+T_0.0 ;
+    %load/v 8, v01035380_0, 32;
+   %cmpi/s 8, 8, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/v 8, v01035380_0, 3; Only need 3 of 32 bits
+; Save base=8 wid=3 in lookaside.
+    %set/v v010352D0_0, 8, 1;
+    %set/v v01034CF8_0, 9, 1;
+    %set/v v01035118_0, 10, 1;
+    %delay 5000, 0;
+    %vpi_call 2 28 "$display", " %b |  %b |  %b | %b", v01035118_0, v010352D0_0, v01034CF8_0, v01035170_0;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v01035380_0, 32;
+    %set/v v01035380_0, 8, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %vpi_call 2 31 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "MUX_Half_adderTB.v";
+    "MUX_Half_adder.v";

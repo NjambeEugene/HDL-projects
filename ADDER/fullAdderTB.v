@@ -10,7 +10,6 @@ $dumpfile("fullAdderTB.vcd");
 $dumpvars(0, tb_full_adder);
 end
 
-
 initial begin
 $display("Testing full adder");
 $monitor( "a = %b, b =%b, c_in = %b, sum = %b, carry_out = %b", a,b,c_in, sum, carry_out);

@@ -16,8 +16,7 @@ module ripple_carry_adderTB();
                 $display("time = %t | a=%b | b=%b | c=%b | sum=%b | carry=%b", $time, a, b, c, sum, carry);
             end
         end
-        // Test with carry-in = 1
-        c = 1;
+        c = 1;// Test with carry-in = 1
         for(i = 0; i < 16; i = i + 1) begin
             for(j = 0; j < 16; j = j + 1) begin
                 a = i; b = j;
